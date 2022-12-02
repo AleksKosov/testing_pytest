@@ -1,3 +1,8 @@
+import allure
+
+
+@allure.description('Тестирование Яндекса')
 def test_yandex():
-    assert 1 == 1, "Ошибка"
+    with allure.step('Ассерт'):
+        assert 1 == 1, "Ошибка"
 
