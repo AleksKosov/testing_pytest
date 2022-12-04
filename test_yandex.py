@@ -4,12 +4,12 @@ import allure
 from selenium import webdriver
 
 
-@allure.suite(suite_name='Тесты для Jenkins')
-class TestJenkins:
-    @allure.title('First test')
-    @allure.description('First test')
+@allure.suite(suite_name='Тесты Yandex для Jenkins')
+class TestYandex:
+    @allure.title('Открытие поисковой строки')
+    @allure.description('Открытие поисковой строки')
     def test_yandex(self):
-        with allure.step('Ассерт'):
+        with allure.step('Открытие поисковой строки'):
             driver = None
             try:
                 capabilities = {
