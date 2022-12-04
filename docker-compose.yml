@@ -32,9 +32,9 @@ services:
       KEEP_HISTORY: 1
     ports:
       - "5050:5050"
-    volumes:
-      - /c/Testing/allure-results:/app/allure-results
-      - /c/Testing/allure-reports:/app/default-reports
+#    volumes:
+#      - /c/Testing/allure-results:/app/allure-results
+#      - /c/Testing/allure-reports:/app/default-reports
   allure-ui:
     image: "frankescobar/allure-docker-service-ui"
     environment:
