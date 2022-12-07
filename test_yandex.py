@@ -1,4 +1,5 @@
 import allure
+import time
 
 
 @allure.suite(suite_name='Тесты Yandex для Jenkins')
@@ -7,4 +8,5 @@ class TestYandex:
     @allure.description('Открытие поисковой строки')
     def test_yandex(self, driver):
         driver.open_base_page()
+        time.sleep(10)
 

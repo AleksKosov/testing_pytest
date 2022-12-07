@@ -6,8 +6,8 @@
     "browserVersion": "106.0",
     "selenoid:options": {
       "enableVNC": true,
-      "enableVideo": false
+      "enableVideo": true
     }
   },
-  "host": "http://localhost:4444//wd/hub"
+  "host": "http://localhost:4545//wd/hub"
 }

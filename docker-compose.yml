@@ -1,44 +1,46 @@
 version: "3.9"
+
 networks:
-  common:
-    external:
-      name: selenoid
+  selenoid:
+    external: true
+
 services:
   selenoid:
     image: "aerokube/selenoid"
     networks:
-      - common
+      - selenoid
     ports:
-      - "4444:4444"
+      - "4545:4444"
     volumes:
       - "./:/etc/selenoid/" # assumed current dir contains browsers.json
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/c/Testing/video:/opt/selenoid/video"
     environment:
       - OVERRIDE_VIDEO_OUTPUT_DIR=/c/Testing/video
     command: ["-video-output-dir", "/opt/selenoid/video", "-container-network", "selenoid"]
   selenoid-ui:
     image: "aerokube/selenoid-ui"
     networks:
-      - common
+      - selenoid
     links:
       - selenoid
     ports:
-      - "8080:8080"
+      - "6060:8080"
     command: [ "--selenoid-uri", "http://selenoid:4444/" ]
   allure:
     image: "frankescobar/allure-docker-service"
     environment:
-      CHECK_RESULTS_EVERY_SECONDS: None
+      CHECK_RESULTS_EVERY_SECONDS: 1
       KEEP_HISTORY: 1
     ports:
       - "5050:5050"
-#    volumes:
-#      - /c/Testing/allure-results:/app/allure-results
-#      - /c/Testing/allure-reports:/app/default-reports
+    volumes:
+      - /c/Testing/allure-results:/app/allure-results
+      - /c/Testing/allure-reports:/app/default-reports
   allure-ui:
     image: "frankescobar/allure-docker-service-ui"
     environment:
       ALLURE_DOCKER_PUBLIC_API_URL: "http://localhost:5050"
       ALLURE_DOCKER_PUBLIC_API_URL_PREFIX: ""
     ports:
-      - "5252:5252"
+      - "5353:5252"
