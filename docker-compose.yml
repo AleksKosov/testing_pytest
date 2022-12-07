@@ -12,7 +12,7 @@ services:
     ports:
       - "4545:4444"
     volumes:
-      - "./:/etc/selenoid/" # assumed current dir contains browsers.json
+      - "./:/etc/selenoid/"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/c/Testing/video:/opt/selenoid/video"
     environment:
