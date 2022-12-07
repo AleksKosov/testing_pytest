@@ -1,0 +1,13 @@
+{
+  "base_url": "https://ya.ru",
+  "capabilities":
+  {
+    "browserName": "firefox",
+    "browserVersion": "106.0",
+    "selenoid:options": {
+      "enableVNC": true,
+      "enableVideo": false
+    }
+  },
+  "host": "http://localhost:4444//wd/hub"
+}
